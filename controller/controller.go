@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"net/http"
 )
 
@@ -24,10 +23,6 @@ func (c *Controller) SetBase(path string) {
 	c.Base = path
 }
 
-func (c *Controller) RegisterRoute(route Route, mux *http.ServeMux) {
-	mux.HandleFunc(c.Base+route.Path, route.Handler)
-
+func (c *Controller) RegisterRoute(route Route) {
 	c.Routes = append(c.Routes, route)
-
-	fmt.Println("Registered: " + c.Base + route.Path)
 }

@@ -27,10 +27,10 @@ func (c *CssUtils) BuildCss() {
 		MinifyWhitespace: true,
 		MinifySyntax:     true,
 		Loader: map[string]api.Loader{
-			".png": api.LoaderFile,
-			".jpg": api.LoaderFile,
-			".svg": api.LoaderFile,
-			".gif": api.LoaderFile,
+			".png": api.LoaderDataURL,
+			".jpg": api.LoaderDataURL,
+			".svg": api.LoaderDataURL,
+			".gif": api.LoaderDataURL,
 		},
 	})
 

@@ -1,4 +1,4 @@
-package components
+package views
 
 import (
 	u "github.com/srutherhub/web-app/utils"
@@ -9,7 +9,7 @@ type IndexProps struct {
 	Title string
 }
 
-templ Index(page templ.Component, prop IndexProps) {
+templ Index(page templ.Component, props IndexProps) {
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +17,7 @@ templ Index(page templ.Component, prop IndexProps) {
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>{props.Title}</title>
-	<link rel="stylesheet" href={utils.GetAssetHash("/public/styles/main.css")}>
+	<link rel="stylesheet" href={u.GetAssetHash("/public/styles/main.css")}>
 	<meta name="htmx-config" content='{"globalViewTransitions":"true"}'>
 	<script src={u.GetAssetHash("/public/scripts/index.js")}></script>
 	<script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js"></script>

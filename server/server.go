@@ -18,6 +18,10 @@ type Server struct {
 	Controllers []c.Controller
 }
 
+func New() *Server {
+	return &Server{}
+}
+
 func (s *Server) Start(config ServerConfig) {
 
 	err := godotenv.Load()
@@ -35,6 +39,10 @@ func (s *Server) Start(config ServerConfig) {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
+}
+
+func (s *Server) RegisterController(c c.Controller) {
+	s.Controllers = append(s.Controllers, c)
 }
 
 func serveStaticFiles(mux *http.ServeMux) {

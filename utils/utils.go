@@ -26,6 +26,12 @@ func (c *CssUtils) BuildCss() {
 		LogLevel:         api.LogLevelInfo,
 		MinifyWhitespace: true,
 		MinifySyntax:     true,
+		Loader: map[string]api.Loader{
+			".png": api.LoaderFile,
+			".jpg": api.LoaderFile,
+			".svg": api.LoaderFile,
+			".gif": api.LoaderFile,
+		},
 	})
 
 	if len(result.Errors) > 0 {

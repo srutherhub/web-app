@@ -8,6 +8,7 @@ import (
 	"github.com/joho/godotenv"
 	c "github.com/srutherhub/web-app/controller"
 	m "github.com/srutherhub/web-app/middleware"
+	u "github.com/srutherhub/web-app/utils"
 )
 
 type ServerConfig struct {
@@ -34,6 +35,9 @@ func (s *Server) Start(config ServerConfig) {
 	registerControllers(mux, s.Controllers)
 
 	serveStaticFiles(mux)
+
+	cssUtils := u.NewCssUtils()
+	cssUtils.BuildCss()
 
 	err = http.ListenAndServe(":"+config.Port, mux)
 	if err != nil {

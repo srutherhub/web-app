@@ -26,12 +26,13 @@ func (c *CssUtils) BuildCss() {
 		LogLevel:         api.LogLevelInfo,
 		MinifyWhitespace: true,
 		MinifySyntax:     true,
+		PublicPath:       "/public",
 		Loader: map[string]api.Loader{
-			".png": api.LoaderDataURL,
-			".jpg": api.LoaderDataURL,
-			".svg": api.LoaderDataURL,
-			".gif": api.LoaderDataURL,
+			".png": api.LoaderFile,
+			".jpg": api.LoaderFile,
+			".svg": api.LoaderFile,
 		},
+		AssetNames: "images/[name]",
 	})
 
 	if len(result.Errors) > 0 {

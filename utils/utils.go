@@ -32,7 +32,7 @@ func (c *CssUtils) BuildCss() {
 			".jpg": api.LoaderFile,
 			".svg": api.LoaderFile,
 		},
-		AssetNames:     "../images/[name]",
+		AssetNames:     "/images/[name]",
 		AllowOverwrite: true,
 	})
 

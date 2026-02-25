@@ -20,19 +20,20 @@ func NewCssUtils() *CssUtils {
 func (c *CssUtils) BuildCss() {
 	result := api.Build(api.BuildOptions{
 		EntryPoints:      []string{"./styles/index.css"},
-		Outfile:          "./public/styles/main.css",
+		Outdir:           "./public",
+		EntryNames:       "styles/main",
+		PublicPath:       "/public",
+		AssetNames:       "images/[name]",
 		Bundle:           true,
 		Write:            true,
 		LogLevel:         api.LogLevelInfo,
 		MinifyWhitespace: true,
 		MinifySyntax:     true,
-		PublicPath:       "/public",
 		Loader: map[string]api.Loader{
 			".png": api.LoaderFile,
 			".jpg": api.LoaderFile,
 			".svg": api.LoaderFile,
 		},
-		AssetNames:     "/images/[name]",
 		AllowOverwrite: true,
 	})
 

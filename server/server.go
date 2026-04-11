@@ -51,8 +51,9 @@ func serveStaticFiles(mux *http.ServeMux) {
 func registerControllers(mux *http.ServeMux, controllers []c.Controller) {
 	for _, controller := range controllers {
 		for _, route := range controller.Routes {
-			mux.HandleFunc(controller.Base+route.Path, route.Handler)
-			fmt.Println("Registered: " + controller.Base + route.Path)
+			pattern := route.Method + " " + controller.Base + route.Path
+			mux.HandleFunc(pattern, route.Handler)
+			fmt.Println("Registered: " + pattern)
 		}
 	}
 }

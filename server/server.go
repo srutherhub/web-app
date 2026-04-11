@@ -24,13 +24,7 @@ func New() *Server {
 }
 
 func (s *Server) Start(config ServerConfig) {
-
-	err := godotenv.Load()
-
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-
+	var err error
 	mux := http.NewServeMux()
 	registerControllers(mux, s.Controllers)
 
@@ -61,4 +55,14 @@ func registerControllers(mux *http.ServeMux, controllers []c.Controller) {
 			fmt.Println("Registered: " + controller.Base + route.Path)
 		}
 	}
+}
+
+func InitServerCfg(port string) ServerConfig {
+	err := godotenv.Load()
+
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	return ServerConfig{Port: port}
 }

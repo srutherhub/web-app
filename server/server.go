@@ -45,7 +45,7 @@ func (s *Server) RegisterController(c c.Controller) {
 
 func serveStaticFiles(mux *http.ServeMux) {
 	fs := http.FileServer(http.Dir("public"))
-	mux.Handle("/public/", http.StripPrefix("/public/", m.SetStaticCacheHeader(fs)))
+	mux.Handle("GET /public/", http.StripPrefix("/public/", m.SetStaticCacheHeader(fs)))
 }
 
 func registerControllers(mux *http.ServeMux, controllers []c.Controller) {

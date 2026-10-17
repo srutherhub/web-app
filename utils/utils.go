@@ -38,7 +38,7 @@ func (c *CssUtils) BuildCss() {
 	})
 
 	if len(result.Errors) > 0 {
-		os.Exit(1)
+		fmt.Println(result.Errors)
 	}
 }
 
